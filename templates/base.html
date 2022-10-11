@@ -1,0 +1,134 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+  <title>
+    {% block title %}
+    Family Stories
+    {% endblock %}
+  </title>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-xl navbar-light">
+    <div class="container-fluid">
+      <span class="navbar-brand pr-4 mt-2 h1">Family Stories</span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          {% if user.is_authenticated %}
+          <li class="nav-item mr-1">
+            <a class="nav-link" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item mr-1">
+            <a class="nav-link" href="{% url 'karin_page' %}">Karin</a>
+          </li>
+          <li class="nav-item mr-1">
+            <a class="nav-link" href="{% url 'graham_page' %}">Graham</a>
+          </li>
+          <li class="nav-item mr-1">
+            <a class="nav-link" href="{% url 'blog_home' %}">Stories</a>
+          </li>
+          <li class="nav-item mr-1">
+            <a class="nav-link " href="{% url 'add_post' %}">New Post</a>
+          </li>
+          <li class="nav-item  mr-1 dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Authors
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              {% for id, name in all_authors.items %}
+                  <a href="{% url 'author' id|slugify %}">&nbsp;{{ name }}</a><br>
+              {% endfor %}              
+            </div>
+          </li>
+          <li class="nav-item  mr-1 dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Categories
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+              {% for item in all_cats %}
+              <a href="{% url 'category' item|slugify %}">&nbsp;{{ item|title }}</a><br>
+              {% endfor %}
+                          
+              <hr class="dropdown-divider">
+              <a class="nav-link" href="{% url 'add_category' %}">Add New Category</a>
+
+            </div>
+          </li>
+          <li class="nav-item mr-1">
+            <a class="nav-link" href="{% url 'tree' %}">Family Tree</a>
+          </li>
+          <li class="nav-item mr-1">
+            <a class="nav-link" href="{% url 'edit_profile' %}">Edit profile</a>
+          </li>
+          <li class="nav-item mr-1">
+            <a class="nav-link" href="{% url 'logout' %}">Log out</a>
+          </li>
+
+          {% else %}
+          <li class="nav-item mr-1">
+            <a class="nav-link" href="{% url 'login' %}">Log in</a>
+          </li>
+        </ul>
+
+        {% endif %}
+
+      </div>
+  </nav>
+  <br />
+  <div class="container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+      {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% block content %}
+
+
+    {% endblock %}
+
+    <footer class="blog-footer">
+      <div class="text-center font-weight-lighter">
+        <hr />
+        <p pt-5>Built by Graham with Django and 
+          <a href="https://getbootstrap.com/">Bootstrap</a>
+        <p>
+          <a href="#">Back to top</a>
+        </p>
+        </p>
+      </div>
+    </footer>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

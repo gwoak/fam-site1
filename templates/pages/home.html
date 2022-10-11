@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Family Stories
+{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+<div class="container">
+  <h2 class="text-center mt-3">Stories from the past</h2>
+  <hr />
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="col-content p-3 bg-light">
+          <p>
+            Mark had the idea of recording some conversations about our past, particularly recollections from childhood
+            and schooldays. But we never seem to manage to make time for for that, so Karin suggested I should set up a
+            website where we could write about childhood memories.
+          </p>
+          <p>
+            I built it originally with WordPress, but now I have learnt some Python and the Django web framework so I
+            thought I would try to rework it with those tools.
+          </p>
+          <p>
+            So here it is. Nothing too clever, although it can get quite fancy if we want to spend a little more time on
+            it.
+          </p>
+          <p>
+            Since we are so spread out, I’m hoping we might use the site for more than just these old stories. Anyone
+            with a login can add a post.
+            You can also edit and delete your own posts.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="col-content p-3 bg-light">
+          <p>
+            We are including an interactive family tree, which is on an external site. It is built using Mac
+            Family Tree, which I run mainly on my laptop, although I have it on the iPad as well. One of the ways it
+            lets you publish the tree is by hosting a website, so that’s what we have here, but it's not optimised for phones.
+          </p>
+          <p>
+            Normally you wouldn’t publish a family tree on the web with entries for living people, but this one is
+            behind the site login, so I think it’s secure enough, and some of it is interesting.
+          </p>
+          <p>
+            No claims for accuracy are made once you go back more than a few hundred years, except for the branch that
+            goes back to Edward III which is well documented. Many of the sources are in ancestry.com, and we can’t go
+            back to those without paying their subscription. Back when we had one, I observed a disappointing amount of
+            rubbish in there, but I tried to clean up as best as I could.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-items-start">
+      <div class="row" id="gallery" data-toggle="modal" data-target="#exampleModal">
+        <div class="col-md-3">
+
+
+          <img src="https://gwoak-family-files.s3.ap-southeast-2.amazonaws.com/uploads/Port-Townsend.jpg" alt="Port Townsend waterfront" class="img-fluid"
+            data-target="#carouselExample" data-slide-to="0">
+          <div class="caption">
+            <p>Port Townsend waterside</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+
+          <img src="https://gwoak-family-files.s3.ap-southeast-2.amazonaws.com/uploads/adelaide_hills.jpeg" alt="Adelaide Hills near Bridgewater" class="img-fluid"
+            width="100%" data-target="#carouselExample" data-slide-to="1">
+          <div class="caption">
+            <p>Adelaide Hills near Bridgewater</p>
+          </div>
+
+        </div>
+        <div class="col-md-3">
+
+          <img src="https://gwoak-family-files.s3.ap-southeast-2.amazonaws.com/uploads/northern_beaches.jpeg" class="img-fluid" data-target="#carouselExample"
+            data-slide-to="2">
+          <div class="caption">
+            <p>Coming down towards Manly on Mark’s prize flight 1995</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <img src="https://gwoak-family-files.s3.ap-southeast-2.amazonaws.com/uploads/surfcoast.jpeg" class="img-fluid" data-target="#carouselExample"
+            data-slide-to="3">
+          <div class="caption">
+            <p>Surf Coast between Bells Beach and Point Addis</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="carouselExample" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExample" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExample" data-slide-to="1"></li>
+              <li data-target="#carouselExample" data-slide-to="2"></li>
+              <li data-target="#carouselExample" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="d-flex justify-content-center w-100 h-100">
+                  <img class="img-fluid" src="https://gwoak-family-files.s3.ap-southeast-2.amazonaws.com/uploads/Port-Townsend.jpg" alt="Port Townsend">
+
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="d-flex justify-content-center w-100 h-100">
+                  <img class="img-fluid" src="https://gwoak-family-files.s3.ap-southeast-2.amazonaws.com/uploads/adelaide_hills.jpeg" alt="Adelaide Hills">
+
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="d-flex justify-content-center w-100 h-100">
+                  <img class="img-fluid" src="https://gwoak-family-files.s3.ap-southeast-2.amazonaws.com/uploads/northern_beaches.jpeg" alt="Northern Beaches">
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="d-flex justify-content-center w-100 h-100">
+                  <img class="img-fluid" src="https://gwoak-family-files.s3.ap-southeast-2.amazonaws.com/uploads/surfcoast.jpeg" alt="Surfcoast">
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center mt-3 font-weight-light font-italic caption">
+    <p>Click a photo to enlarge</p>
+  </div>
+
+  {% else %}
+  You're not authorised to be here! (and you know it...)
+  {% endif %}
+  {% endblock %}

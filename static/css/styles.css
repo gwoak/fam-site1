@@ -1,0 +1,60 @@
+.navbar {
+  background-color: #e3f2fd;
+}
+
+.dropdown-divider {
+  
+  border-top: 1px solid rgb(0,0,0,.20);
+}
+
+.newspaper {
+      column-count: 2;     
+      -webkit-column-count: 2;
+      -moz-column-count:    2; /* Firefox */
+      -webkit-column-gap:   50px; /* Chrome, Safari, Opera */
+      -moz-column-gap:      50px; /* Firefox */
+      column-gap:           50px;
+      column-rule-color: #ccc;
+      column-rule-style:solid;
+      column-rule-width: 1px;
+      column-width: 350px;
+      /* text-align: justify; */
+  }
+ 
+
+.carousel-control-next, .carousel-control-prev {
+  width: 5%;
+}
+
+.carousel-indicators li {
+  opacity: 0.7;
+}
+
+.caption {
+  font-size: 0.9rem;
+}
+
+.blog-footer {
+  font-size: 0.8rem;
+}
+
+ul.errorlist {display:none;}
+
+.note-float-right {
+  margin-left: 20px;
+}
+.note-float-left {
+  margin-right: 20px;
+}
+
+.django-ckeditor-widget {
+  width: 100%;
+}
+
+figure {
+  margin: 20px;
+}
+
+figcaption {
+  text-align: center;
+}

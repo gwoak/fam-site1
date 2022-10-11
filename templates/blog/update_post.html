@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+Edit blog post
+{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="container">
+    {% if user.id == post.author.id %}
+    <h1>Update Your Post</h1>
+    <br /> <br />
+    {% if post.header_image %}
+    <img src="{{ post.header_image.url }}" {% endif %} <div class="form-group">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-secondary">Update</button>
+        <a href="{% url 'blog_home' %}" class="btn btn-dark">Cancel</a>
+    </form>
+</div>
+{% else %}
+<br />This is not your post!
+{% endif %}
+</div>
+{% else %}
+
+You're not authorised to be here! (and you know it...)
+
+{% endif %}
+
+{% endblock %}

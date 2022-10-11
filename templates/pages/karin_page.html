@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+
+Karin
+{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+<div class="container">
+    <h1 class="text-center mt-3">Karin's Page</h1>
+
+    <hr />
+
+    <div class="newspaper bg-light">
+        <div class="col g-3 col-content">
+            <p>
+                My maiden name is Höltgen, and I know very little about that family, as I had no contact with my father from the time my parents separated and divorced until I was at university. He sought me out when I was about twenty, and at some stage he told me that he had done extensive research into his family history, and that there was a strong Polish influence in our ancestry. Apparently there was also an aristocratic woman – something he was proud of! – but unfortunately I did not ask to see that family tree, and after he committed suicide I had no further contact with his wife or his childless brother. In other words, I know practically nothing about that family.</p>
+                <p>Things are not much better on my mother’s side. 
+                    
+                    We lived in the mediaeval house where my grandmother had been born, and my impression was always that they had lived there for a long time, but, again, I know very little. After my mother died, I discovered that she had, apparently, destroyed all family papers. So, I have no knowledge at all about my grandfather’s record in the First world War, or indeed which Regiment he belonged to, beyond the fact that he was awarded 2 Iron Crosses, which I have in my possession. I never found any record of my parents’ marriage or divorce, or any other papers that might have shed light on the family history. All I have is anecdotal, mainly from my grandfather, a little from my grandmother, and less from my mother. She was a secretive woman. 
+<img class="img-fluid mt-4" src="https://gwoak-family-files.s3.ap-southeast-2.amazonaws.com/uploads/Wuestenhof.png">
+            </p>
+          
+            
+        </div>
+    </div>
+</div>
+{% else %}
+You're not authorised to be here! (And you know it...)
+{% endif %}
+
+{% endblock %}
